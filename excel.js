@@ -9,7 +9,7 @@ Excel.getColumns = function(fields, data) {
     _.each(fields, function(field, index) {
       var value = searchObject(item, field.key) || null;
       value = _.isFunction(field.transform) ? field.transform(value, item) : value;
-      row[index] = value
+      row[index] = value ? value : ''
     });
     rows.push(row);
   });
