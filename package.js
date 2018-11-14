@@ -1,12 +1,12 @@
 Package.describe({
-  name: 'nicolaslopezj:excel-export',
-  summary: 'Export data to excel',
-  version: '1.0.0',
-  git: 'https://github.com/nicolaslopezj/excel-export'
+  name: 'dekodesign:excel-export',
+  summary: 'Export data to excel via SheetJS XLSX. Based on nicolaslopezj:excel-export',
+  version: '1.1.0',
+  git: 'https://github.com/dekodesign/excel-export'
 });
 
 Npm.depends({
-  'excel-export': '0.4.1'
+  'xlsx': '^0.14.1'
 });
 
 Package.onUse(function(api) {
