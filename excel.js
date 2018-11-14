@@ -1,5 +1,5 @@
 Excel = {};
-Excel.lib = Npm.require('excel-export');
+Excel.lib = Npm.require('xlsx');
 
 Excel.getColumns = function(fields, data) {
   var rows = [];
@@ -41,5 +41,6 @@ Excel.export = function(title, fields, data) {
   });
 
   excel.rows = rows;
-  return Excel.lib.execute(excel);
+  console.log(excel);
+  //return Excel.lib.execute(excel);
 }
