@@ -23,24 +23,21 @@ Excel.export = function(title, fields, data) {
   check(fields, [{
     key: String,
     title: String,
-    type: Match.Optional(String),
-    width: Match.Optional(Number),
     transform: Match.Optional(Function)
   }]);
   check(data, [Match.Any]);
 
   var rows = this.getColumns(fields, data);
-
-  var excel = {};
-  excel.cols = fields.map(function(field) {
-    return {
-      caption: field.title,
-      type: field.type || 'string',
-      width: field.width || 28.7109375
-    };
+  var header_row = fields.map(function(field) {
+    return field.title
   });
 
-  excel.rows = rows;
-  console.log(excel);
-  //return Excel.lib.execute(excel);
+  excel.rows = [ cols ];
+  excel.rows = excel.rows.concat(rows);
+
+  Excel.ws = Excel.lib.utils.aoa_to_sheet(excel.rows);
+  Excel.wb = Excel.lib.utils.book_new();
+  Excel.lib.utils.book_append_sheet(Excel.wb, Excel.ws, title);
+
+  return Excel.lib.write(Excel.wb,{ type: 'buffer' });
 }
