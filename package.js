@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Npm.depends({
-  'xlsx': '^0.14.1'
+  'xlsx': '0.14.1'
 });
 
 Package.onUse(function(api) {
