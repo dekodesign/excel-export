@@ -32,7 +32,9 @@ Excel.export = function(title, fields, data) {
     return field.title
   });
 
-  excel.rows = [ cols ];
+  excel = {};
+
+  excel.rows = [ header_row ];
   excel.rows = excel.rows.concat(rows);
 
   Excel.ws = Excel.lib.utils.aoa_to_sheet(excel.rows);
